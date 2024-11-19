@@ -1,0 +1,37 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace FundingApp.Models
+{
+    public class Reward
+    {
+        [Key]
+        public Guid RewardID { get; set; } = Guid.NewGuid();
+
+        [Required]
+        public Guid ProjectID { get; set; }
+
+        [ForeignKey("ProjectID")]
+        public Project Project { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Title { get; set; } = string.Empty;
+
+        public string Description { get; set; } = string.Empty;
+
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal PledgeAmount { get; set; }
+
+        public int? QuantityAvailable { get; set; } // Null if unlimited
+
+        public int QuantityClaimed { get; set; } = 0;
+
+        public DateTime? EstimatedDelivery { get; set; }
+
+        public bool IsLimited { get; set; } = false;
+
+        public ICollection<Pledge> Pledges { get; set; } = new List<Pledge>();
+    }
+}
