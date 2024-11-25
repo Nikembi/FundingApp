@@ -1,4 +1,6 @@
 using FundingApp.Data;
+using FundingApp.Models;
+using FundingApp.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +19,7 @@ builder.Services.AddDbContext<FundingDBContext>(options =>
 
 //Add Identity Services
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()
-    .AddEntityFrameworkStores<CrowdFundingDBContext>()
+    .AddEntityFrameworkStores<FundingDBContext>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
 
@@ -40,13 +42,13 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdministratorRole",
-         policy => policy.RequireRole(UserRole.ADMIN.ToString()));
+         policy => policy.RequireRole(UserRole.admin.ToString()));
 
     options.AddPolicy("RequireProjectCreatorRole",
-         policy => policy.RequireRole(UserRole.CREATOR.ToString()));
+         policy => policy.RequireRole(UserRole.creator.ToString()));
 
     options.AddPolicy("RequireBackerRole",
-         policy => policy.RequireRole(UserRole.BACKER.ToString()));
+         policy => policy.RequireRole(UserRole.reguser.ToString()));
 });
 
 
