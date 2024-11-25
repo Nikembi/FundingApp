@@ -1,3 +1,4 @@
+using FundingApp.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 //configure ms sql server
-builder.Services.AddDbContext<CrowdFundingDBContext>(options =>
+builder.Services.AddDbContext<FundingDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CrowdfundingDB")));
 
 

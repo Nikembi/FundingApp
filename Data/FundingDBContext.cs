@@ -1,12 +1,11 @@
 ﻿using FundingApp.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace FundingApp.Data
 {
-    public class FundingDBContext : DbContext
+    public class FundingDBContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         // DbSet properties represent tables in the database for each model class
         //public DbSet<User> Users { get; set; } already includes this DBSet
@@ -16,7 +15,8 @@ namespace FundingApp.Data
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Message> Messages { get; set; }
 
-        public FundingDBContext(DbContextOptions<FundingDBContext> options) : base(options)
+        public FundingDBContext(DbContextOptions<FundingDBContext> options) 
+            : base(options)
         {
         }
 
@@ -91,7 +91,7 @@ namespace FundingApp.Data
             // Configure a unique index on the Username property of the User entity.
             // This ensures that each username is unique across all users.
             modelBuilder.Entity<User>()
-                .HasIndex(u => u.UserName)    // Specify the property to index (User.Username)
+                .HasIndex(u => u.Username)    // Specify the property to index (User.Username)
                 .IsUnique();                  // Enforce uniqueness on the Username property
 
             // ---------------------
