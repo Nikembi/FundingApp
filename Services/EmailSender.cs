@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Crowdfunding.Services
+namespace FundingApp.Services
 {
     public class EmailSender : IEmailSender
     {

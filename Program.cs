@@ -4,6 +4,7 @@ using FundingApp.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using FundingApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 //configure ms sql server
 builder.Services.AddDbContext<FundingDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CrowdfundingDB")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("fundingDB")));
 
 
 //builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CrowdFundingDBContext>();
