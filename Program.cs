@@ -4,6 +4,7 @@ using FundingApp.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+
 using FundingApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +22,7 @@ builder.Services.AddDbContext<FundingDBContext>(options =>
 //Add Identity Services
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<FundingDBContext>()
-    .AddDefaultTokenProviders()
-    .AddDefaultUI();
+    .AddDefaultTokenProviders();
 
 //configure identity options
 builder.Services.Configure<IdentityOptions>(options =>

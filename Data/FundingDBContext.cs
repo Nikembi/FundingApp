@@ -91,7 +91,7 @@ namespace FundingApp.Data
             // Configure a unique index on the Username property of the User entity.
             // This ensures that each username is unique across all users.
             modelBuilder.Entity<User>()
-                .HasIndex(u => u.Username)    // Specify the property to index (User.Username)
+                .HasIndex(u => u.UserName)    // Specify the property to index (User.Username)
                 .IsUnique();                  // Enforce uniqueness on the Username property
 
             // ---------------------

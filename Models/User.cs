@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using FundingApp.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace FundingApp.Models
 {
-    public class User
+    public class User : IdentityUser<Guid>
     {
         public User()
         {
@@ -16,20 +17,20 @@ namespace FundingApp.Models
         }
 
 
-        [Key]
-        public Guid UserID { get; set; } = Guid.NewGuid();
+        //[Key]
+        //public Guid UserID { get; set; } = Guid.NewGuid();
 
-        [Required]
-        [MaxLength(50)]
-        public string Username { get; set; }
+        //[Required]
+        //[MaxLength(50)]
+        //public string Username { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [MaxLength(100)]
-        public string Email { get; set; }
+        //[Required]
+        //[EmailAddress]
+        //[MaxLength(100)]
+        //public string Email { get; set; }
 
-        [Required]
-        public string PasswordHash { get; set; }
+        //[Required]
+        //public string PasswordHash { get; set; }
 
         [Required]
         [MaxLength(20)]
