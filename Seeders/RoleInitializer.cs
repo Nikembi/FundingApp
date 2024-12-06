@@ -4,21 +4,24 @@ using System;
 using System.Threading.Tasks;
 using FundingApp.Enums;
 
-public static class RoleInitializer
+namespace FundingApp.Seeders
 {
-    public static async Task InitializeAsync(IServiceProvider serviceProvider)
+    public static class RoleInitializer
     {
-        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
-
-        UserRole[] roles = { UserRole.admin, UserRole.creator, UserRole.reguser };
-
-        foreach (var role in roles)
+        public static async Task InitializeAsync(IServiceProvider serviceProvider)
         {
-            var roleName = role.ToString();
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
 
-            if (!await roleManager.RoleExistsAsync(roleName))
+            UserRole[] roles = { UserRole.admin, UserRole.creator, UserRole.reguser };
+
+            foreach (var role in roles)
             {
-                await roleManager.CreateAsync(new IdentityRole<Guid>(roleName));
+                var roleName = role.ToString();
+
+                if (!await roleManager.RoleExistsAsync(roleName))
+                {
+                    await roleManager.CreateAsync(new IdentityRole<Guid>(roleName));
+                }
             }
         }
     }

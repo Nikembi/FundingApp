@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 using FundingApp.Services;
+using FundingApp.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
