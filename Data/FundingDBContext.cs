@@ -15,7 +15,7 @@ namespace FundingApp.Data
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Message> Messages { get; set; }
 
-        public FundingDBContext(DbContextOptions<FundingDBContext> options) 
+        public FundingDBContext(DbContextOptions<FundingDBContext> options)
             : base(options)
         {
         }
