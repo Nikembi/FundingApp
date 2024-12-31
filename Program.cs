@@ -17,9 +17,9 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.AddDbContext<FundingDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("fundingDB")));
 
+//builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FundingDBContext>();
 
-//builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CrowdFundingDBContext>();
-
+builder.Services.AddMvc();
 //Add Identity Services
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<FundingDBContext>()

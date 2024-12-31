@@ -34,7 +34,7 @@ namespace FundingApp.Models
 
         [Required]
         [MaxLength(20)]
-        public UserRole Role { get; set; } // Possible values: "reguser", "creator", "admin"
+        public UserRole Role { get; set; } // Possible values: "backer", "creator", "admin"
 
         [Url]
         public string ProfilePictureUrl { get; set; }
