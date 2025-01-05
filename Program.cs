@@ -18,7 +18,6 @@ builder.Services.AddDbContext<FundingDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("fundingDB")));
 
 //builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<FundingDBContext>();
-
 builder.Services.AddMvc();
 //Add Identity Services
 builder.Services.AddIdentity<User, IdentityRole<Guid>>()

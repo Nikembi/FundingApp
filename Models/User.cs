@@ -48,7 +48,7 @@ namespace FundingApp.Models
 
         // Navigation properties
         public ICollection<Project> Projects { get; set; }
-
+       
         public ICollection<Pledge> Pledges { get; set; }
 
         public ICollection<Message> SentMessages { get; set; }
